@@ -24,8 +24,10 @@ def main() -> None:
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
+    # Normalise to exactly one trailing newline, whatever the literal holds.
+    text = TEXT.rstrip("\n") + "\n"
     with open(path, "w", encoding="utf-8", newline="\n") as f:
-        f.write(TEXT)
+        f.write(text)
 
 
 if __name__ == "__main__":
